@@ -8,7 +8,8 @@ angular.module('xsellDemoApp', [
   'firebase',
   'angularfire.firebase',
   'angularfire.login',
-  'simpleLoginTools'
+  'simpleLoginTools',
+  'AngularGM'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -22,6 +23,11 @@ angular.module('xsellDemoApp', [
         templateUrl: 'views/login.html',
         controller: 'LoginController'
       })
+      .when('/task/:taskid', {
+          authRequired: true, // if true, must log in before viewing this page
+          templateUrl: 'views/taskdetail.html',
+          controller: 'TaskDetail'
+      })
       .otherwise({
         redirectTo: '/login'
       });
@@ -31,7 +37,7 @@ angular.module('xsellDemoApp', [
         //$scope.alertShow = false;
         $scope.alertMessage=null;
 
-        $scope.customer =[
+        $scope.customers =[
             {
                 cid:1,
                 name:"North East Beverage",
@@ -110,7 +116,7 @@ angular.module('xsellDemoApp', [
                 city:"Worcester",
                 state:"MA",
                 zip:"01602",
-                long:42.263177,
+                lng:42.263177,
                 lat:-71.831701,
                 contacts:[
                     {name:"Bob Johnson",title:"President",phone1:"(508) 753-0250", email:"bjohnson@nebeverage.com"},
@@ -120,10 +126,10 @@ angular.module('xsellDemoApp', [
             }
         ]
 
-        $scope.display =[
+        $scope.displays =[
             {
-                did:1,
-                name:"Free Standing Christmas display",
+                did:302,
+                name:"Free Standing Christmas Display",
                 location:"front left of store",
                 tasks:[
                     {tid:23}
@@ -139,8 +145,8 @@ angular.module('xsellDemoApp', [
                 pid:27, // product id
                 lid:1, // location id
                 did:302,// display id
-                name:"Catalog Current Inventory",
-                description:"Take a count of all current inventory",
+                name:"Maintain Current Display",
+                description:"When our selves look good our product sells. Our primary job is to create a good sales environment for our products. Clean up the display. Take a count of all current inventory in the store, both on shelf and off. Ask an on staff rep how the display is performing. Ask what they think we could do to make it work even better. Be thankful and friendly.",
                 due:"2014-03-29T00:29:49.082Z",
                 steps:[
                     {
@@ -246,4 +252,17 @@ angular.module('xsellDemoApp', [
 
 
 
+    })
+  .controller('SimpleMapCtrl', function($scope) {
+    $scope.$watch('center', function(center) {
+      if (center) {
+        $scope.centerLat = center.lat();
+        $scope.centerLng = center.lng();
+      }
     });
+
+    $scope.updateCenter = function(lat, lng) {
+      $scope.center = new google.maps.LatLng(lat, lng);
+    };
+  })
+;

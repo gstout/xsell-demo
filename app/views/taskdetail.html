@@ -1,0 +1,38 @@
+<div ng-include="'views/mainnav.html'"></div>
+
+<h2>
+    {{taskDetail.name}}<br> <small>Due: {{taskDetail.due | date}}</small>
+</h2>
+<div class="panel panel-default">
+<h3>Location: {{taskDetail.location.name}}</br> Display: {{taskDetail.display.name}}</h3>
+
+    <gm-map gm-map-id="'infoWindows'" gm-center="center" gm-zoom="zoom"
+            gm-map-options="options.map" style="width:400px;height:400px;">
+
+    </div>
+
+<!--<gm-map gm-map-id="'myMap'" gm-center="center" gm-zoom="zoom" gm-bounds="center" gm-map-type-id="mapTypeId" style="width:400px;height:400px;"></gm-map>-->
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Task Description</div>
+    <div class="panel-body">
+        {{taskDetail.description}}
+    </div>
+
+
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="step in taskDetail.steps | orderByPriority">
+        {{step.name}}
+        <button type="button" ng-click="deleteTask(step.$id, step.name)"  class="close" aria-hidden="true">&times;</button>
+
+    </li>
+</ul>
+</div>
+<div>
+    <pre class="well"> {{ center| json}}</pre>
+    <pre class="well"> {{ options| json}}</pre>
+    <pre class="well"> The task {{ taskDetail| json}}</pre>
+</div>
+
+

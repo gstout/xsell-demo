@@ -43,6 +43,37 @@ angular.module('xsellDemoApp')
 
 
   })
+  .controller('TaskDetail', function($scope,$routeParams){
+
+//    Task
+//
+//
+//    $scope.tasks
+//
+    //$scope.taskDetail =parseInt($routeParams.taskid);
+    $scope.taskDetail = _.findWhere($scope.tasks, {tid:parseInt($routeParams.taskid)});
+    $scope.taskDetail.location = _.findWhere($scope.locations, {lid:parseInt($scope.taskDetail.lid)});
+    $scope.taskDetail.display = _.findWhere($scope.displays, {did:parseInt($scope.taskDetail.did)});
+    $scope.taskDetail.customer = _.findWhere($scope.customers, {cid:parseInt($scope.taskDetail.cid)});
+    $scope.taskDetail.product = _.findWhere($scope.products, {pid:parseInt($scope.taskDetail.pid)});
+
+    //<gm-map gm-map-id="'myMap'" gm-center="center" gm-zoom="zoom" gm-bounds="bounds" gm-map-type-id="mapTypeId" style="width:400px;height:400px;"></gm-map>
+//angulargm.objToLatLng();
+  //  $scope.center = new google.maps.LatLng($scope.taskDetail.location.lat, $scope.taskDetail.location.lng);
+    //$scope.center = angulargm.objToLatLng($scope.taskDetail.location);
+    $scope.zoom = 4;
+
+    $scope.options = {
+      map: {
+       // center: new google.maps.LatLng(48, -121),
+        center: new google.maps.LatLng(parseFloat($scope.taskDetail.location.lng),parseFloat($scope.taskDetail.location.lat)),
+        zoom: 16
+       // mapTypeId: google.maps.MapTypeId.TERRAIN
+      }
+    };
+
+  })
+
 .directive('myCurrentTime', function($interval, dateFilter) {
 
         function link(scope, element, attrs) {

@@ -1,0 +1,25 @@
+<div ng-include="'views/mainnav.html'"></div>
+<div class="list-group">
+    <div class="list-group-item" ng-repeat="customer in customers | orderByPriority" href="#/task/{{task.tid}}">
+        <h3 style="margin-top:10px;">{{customer.name}}</h3>
+        <h4>{{customer.address1}}<br>{{customer.address2}}<br>{{customer.city}},{{customer.state}} {{customer.zip}}</h4>
+        <div class="list-group-item" ng-repeat="contact in customer.contacts | orderByPriority" href="#/task/{{task.tid}}">
+            <div> <h5>{{contact.name}} - <strong>{{contact.title}}</strong></h5>
+                <br>
+                <div class="btn-group-vertical btn-group-justified">
+                <a  class="btn btn-default" ng-href="#"><span class="glyphicon glyphicon-phone-alt"></span> {{contact.phone1}}</a>
+
+                <a  class="btn btn-default" ng-href="mailto:{{contact.email}}"><span class="glyphicon glyphicon-envelope"></span> {{contact.email}}</a>
+                </div>
+
+                <!--<button type="button" ng-click="deleteTask(task.$id, task.name)"  class="close" aria-hidden="true">&times;</button>-->
+            </div>
+        </div>
+</div>
+
+</div>
+        <!--<div class="well">-->
+            <!--<pre>-->
+            <!--{{customers | json}}-->
+                <!--</pre>-->
+        <!--</div>-->

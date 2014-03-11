@@ -1,0 +1,20 @@
+<div ng-include="'views/mainnav.html'"></div>
+<div class="panel panel-default">
+    <div class="panel-body">
+
+<input id="locationfilter" class="form-control type="text" ng-model="searchText" placeholder="filter location" >
+
+        </div></div>
+<div class="list-group">
+    <a class="list-group-item" ng-repeat="location in locations | filter:searchText" href="#/location/{{location.lid}}">
+        <h3 style="margin-top:10px;">{{location.name}}</h3>
+        <h4>{{location.city}}- {{location.state}}</h4>
+    </a>
+</div>
+
+
+<!--<pre class="well">-->
+
+<!--{{locations | json}}-->
+
+<!--</pre>-->

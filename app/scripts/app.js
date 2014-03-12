@@ -15,7 +15,7 @@ angular.module('xsellDemoApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        authRequired: true, // if true, must log in before viewing this page
+        authRequired: false, // if true, must log in before viewing this page
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
@@ -25,22 +25,22 @@ angular.module('xsellDemoApp', [
         controller: 'LoginController'
       })
       .when('/task/:taskid', {
-        authRequired: true, // if true, must log in before viewing this page
+        authRequired: false, // if true, must log in before viewing this page
         templateUrl: 'views/taskdetail.html',
         controller: 'TaskDetail'
       })
       .when('/customer', {
-        authRequired: true, // if true, must log in before viewing this page
+        authRequired: false, // if true, must log in before viewing this page
         templateUrl: 'views/customers.html',
         controller: 'Customers'
       })
       .when('/location/', {
-        authRequired: true, // if true, must log in before viewing this page
+        authRequired: false, // if true, must log in before viewing this page
         templateUrl: 'views/locations.html',
         controller: 'Locations'
       })
       .when('/location/:locationid', {
-        authRequired: true, // if true, must log in before viewing this page
+        authRequired: false, // if true, must log in before viewing this page
         templateUrl: 'views/locationdetail.html',
         controller: 'LocationDetail'
       })
@@ -214,8 +214,56 @@ angular.module('xsellDemoApp', [
 
 
         $scope.tasks=[
+          {
+            tid:23, //task id
+            cid:1, //customer id
+            pid:32, // product id
+            lid:1, // location id
+            did:303,// display id
+            name:"Set Up New Display",
+            description:"Create a new display at the location for the product. \n        \nThis is a big opportunity for the product. It is your chance to negotiate more space and a better location. These two factors will increase sales if done correctly. Before you begin walk the store and in your mind find three place that would serve well.\n        \nApproach the staff of the store and involve them in the process. Show them what the display will look like and explain you choices for a location. The more involved they are in the process the more they will work to preserve the display when you are not present.",
+            due:"2014-03-22T00:29:49.082Z",
+            steps:[
+              {
+                name:"Get on site permission",
+                description:"Before you begin make sure you have discussed the display and it\'s location with the store staff.\n        \n(A location visible from the entrance will have a 15% higher sale rate that those not visible.)\n        ",
+                done:false,
+                note:"",
+                finished:""
+              },
+              {
+                name:"Take a photo of the location before setup",
+                description:"Please take a quick photo of what the installation location looks like without the new dispaly",
+                done:false,
+                note:"",
+                finished:""
+              },
+              {
+                name:"Install the display",
+                description:"Take your time. Many temporary display are strong once assembled but not before.\n        \nOnce you are finished make sure the display is solid. A case of liquor will weight 24lbs. Ask yourself if you think this display will be able to hold the required product. \n\nIf you have any doubts do not use the display. Is it collapses or causes an hazzard it could prevent the location from using our display in the future.\n        \n        \n        ",
+                done:false,
+                note:"",
+                finished:""
+              },
+              {
+                name:"Stock the display",
+                description:"Stock the display with product. Use all of the product you have brought with you for this purpose before using any in-store product. ",
+                done:false,
+                note:"",
+                finished:""
+              },
+              {
+                name:"Take a photo of the completed display",
+                description:"Take photos of the completed display from the front and the side. Add these photos to the display description and fill out the rest of the description and this location.\n        \nYou have gone to all the effort to setup a new display. Document it accurately because the manufacturer will see your description and photos.",
+                done:false,
+                note:"",
+                finished:""
+              }
+
+            ]
+          },
             {
-                tid:23, //task id
+                tid:24, //task id
                 cid:1, //customer id
                 pid:27, // product id
                 lid:1, // location id
@@ -255,54 +303,7 @@ angular.module('xsellDemoApp', [
 
                 ]
             },
-            {
-                tid:24, //task id
-                cid:1, //customer id
-                pid:32, // product id
-                lid:1, // location id
-                did:303,// display id
-                name:"Set Up New Display",
-                description:"Create a new display at the location for the product. \n        \nThis is a big opportunity for the product. It is your chance to negotiate more space and a better location. These two factors will increase sales if done correctly. Before you begin walk the store and in your mind find three place that would serve well.\n        \nApproach the staff of the store and involve them in the process. Show them what the display will look like and explain you choices for a location. The more involved they are in the process the more they will work to preserve the display when you are not present.",
-                due:"2014-03-29T00:29:49.082Z",
-                steps:[
-                    {
-                        name:"Get on site permission",
-                        description:"Before you begin make sure you have discussed the display and it\'s location with the store staff.\n        \n(A location visible from the entrance will have a <strong>15% higher sale rate</strong> that those not visible.)\n        ",
-                        done:false,
-                        note:"",
-                        finished:""
-                    },
-                    {
-                        name:"Take a photo of the location before setup",
-                        description:"please take a quick photo of what the installation location looks like without the new dispaly",
-                        done:false,
-                        note:"",
-                        finished:""
-                    },
-                    {
-                        name:"Install the display",
-                        description:"Take your time. Many temporary display are strong once assembled but not before.\n        \nOnce you are finished make sure the display is solid. A case of liquor will weight 24lbs. Ask yourself if you think this display will be able to hold the required product. \n\nIf you have any doubts do not use the display. Is it collapses or causes an hazzard it could prevent the location from using our display in the future.\n        \n        \n        ",
-                        done:false,
-                        note:"",
-                        finished:""
-                    },
-                    {
-                        name:"Stock the display",
-                        description:"Stock the display with product. Use all of the product you have brought with you for this purpose before using any in-store product. ",
-                        done:false,
-                        note:"",
-                        finished:""
-                    },
-                    {
-                        name:"Take a photo of the completed display",
-                        description:"Take photos of the completed display from the front and the side. Add these photos to the display description and fill out the rest of the description and this location.\n        \nYou have gone to all the effort to setup a new display. Document it accurately because the manufacturer will see your description and photos.",
-                        done:false,
-                        note:"",
-                        finished:""
-                    }
 
-                ]
-            },
           {
             tid:25, //task id
             cid:1, //customer id
@@ -315,14 +316,14 @@ angular.module('xsellDemoApp', [
             steps:[
               {
                 name:"Get on site permission",
-                description:"Before you begin make sure you have discussed the display and it\'s location with the store staff.\n        \n(A location visible from the entrance will have a <strong>15% higher sale rate</strong> that those not visible.)\n        ",
+                description:"Before you begin make sure you have discussed the display and it\'s location with the store staff.\n        \n(A location visible from the entrance will have a 15% higher sale rate that those not visible.)\n        ",
                 done:false,
                 note:"",
                 finished:""
               },
               {
                 name:"Take a photo of the location before setup",
-                description:"please take a quick photo of what the installation location looks like without the new dispaly",
+                description:"Please take a quick photo of what the installation location looks like without the new dispaly",
                 done:false,
                 note:"",
                 finished:""
@@ -363,14 +364,14 @@ angular.module('xsellDemoApp', [
             steps:[
               {
                 name:"Get on site permission",
-                description:"Before you begin make sure you have discussed the display and it\'s location with the store staff.\n        \n(A location visible from the entrance will have a <strong>15% higher sale rate</strong> that those not visible.)\n        ",
+                description:"Before you begin make sure you have discussed the display and it\'s location with the store staff.\n        \n(A location visible from the entrance will have a 15% higher sale rate that those not visible.)\n        ",
                 done:false,
                 note:"",
                 finished:""
               },
               {
                 name:"Take a photo of the location before setup",
-                description:"please take a quick photo of what the installation location looks like without the new dispaly",
+                description:"Please take a quick photo of what the installation location looks like without the new dispaly",
                 done:false,
                 note:"",
                 finished:""

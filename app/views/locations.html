@@ -1,15 +1,16 @@
 <div ng-include="'views/mainnav.html'"></div>
 <div class="panel panel-default">
-    <div class="panel-body">
-
-<input id="locationfilter" class="form-control type="text" ng-model="searchText" placeholder="filter location" >
-
-        </div></div>
-<div class="list-group">
-    <a class="list-group-item" ng-repeat="location in locations | filter:searchText" href="#/location/{{location.lid}}">
-        <h3 style="margin-top:10px;">{{location.name}}</h3>
-        <h4>{{location.city}}- {{location.state}}</h4>
-    </a>
+    <div class="panel-heading"><input id="locationfilter" class="form-control" type="text" ng-model="searchText"
+        placeholder=" Type a name here to filter the locations" >
+    </div>
+    <div class="list-group">
+        <a class="list-group-item" ng-repeat="location in locations | filter:searchText"
+           href="#/location/{{location.lid}}">
+            <h3 class="text-primary" style="margin-top:10px;">{{location.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></h3>
+            <h4 class="text-muted"><span class="glyphicon glyphicon-globe"></span> {{location.city}}- {{location.state}}
+            </h4>
+        </a>
+    </div>
 </div>
 
 

@@ -1,8 +1,8 @@
 <div ng-include="'views/mainnav.html'"></div>
 <div class="list-group">
     <div class="list-group-item" ng-repeat="customer in customers | orderByPriority" href="#/task/{{task.tid}}">
-        <h3 style="margin-top:10px;">{{customer.name}}</h3>
-        <h4>{{customer.address1}}<br>{{customer.address2}}<br>{{customer.city}},{{customer.state}} {{customer.zip}}</h4>
+        <h3  class="text-primary" style="margin-top:10px;">{{customer.name}}</h3>
+        <h4 class="text-muted">{{customer.address1}}<br>{{customer.address2}}<br>{{customer.city}},{{customer.state}} {{customer.zip}}</h4>
         <div class="list-group-item" ng-repeat="contact in customer.contacts | orderByPriority" href="#/task/{{task.tid}}">
             <div> <h5>{{contact.name}} - <strong>{{contact.title}}</strong></h5>
                 <br>

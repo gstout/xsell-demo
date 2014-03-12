@@ -1,48 +1,55 @@
 <div ng-include="'views/mainnav.html'"></div>
 
 <!--<div ng-controller="AlertDemoCtrl" ng-show="alert.msg">-->
-    <!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
+<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
 <!--</div>-->
 
-<div class="alert alert-warning alert-dismissable" ng-show="alertMessage" >
+<div class="alert alert-warning alert-dismissable" ng-show="alertMessage">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <strong>{{alertMessage}}</strong>
 </div>
-<div class="jumbotron">
-  <!--<h1>{{today  | date:'medium'}}</h1>-->
-<h2><span my-current-time="format"></span></h2>
-    <p class="lead">
-    {{currentUser.email}} current schedule.
-  </p>
-  <!--<p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>-->
+<div>
+
 </div>
-<div class="list-group">
-    <a class="list-group-item" ng-repeat="task in tasks | orderByPriority" href="#/task/{{task.tid}}">
-        <h3 style="margin-top:10px;">{{task.name}}</h3>
-        <h4>{{task.product.manufacturer}} - {{task.product.product}}</h4>
-        <div> {{task.location.name}} | <strong>{{task.due | date:medium}}</strong>
-        <button type="button" ng-click="deleteTask(task.$id, task.name)"  class="close" aria-hidden="true">&times;</button>
+<div class="page-header">
+    <h1 class="pull-right"> <small><p my-current-time="format" class="text-right"></p></small><h1 class="text-left" >Tasks</h1>
+
+
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading"><input id="locationfilter" class="form-control" type="text" ng-model="searchText"
+                                      placeholder="Type here to filter the tasks">
+    </div>
+    <div class="list-group">
+        <a class="list-group-item bg-info" ng-repeat="task in tasks | filter:searchText" href="#/task/{{task.tid}}">
+            <h3 class="text-primary" style="margin-top:10px;">{{task.name}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i></h3>
+            <h4 class="text-muted">{{task.product.manufacturer}} - {{task.product.product}}</h4>
+
+            <div><span class="glyphicon glyphicon-globe"></span> {{task.location.name}} | <strong><span
+                    class="glyphicon glyphicon-calendar"></span> {{task.due | date:medium}}</strong>
+                <!--<button type="button" ng-click="deleteTask(task.$id, task.name)"  class="close" aria-hidden="true">&times;</button>
+                -->
             </div>
 
-    </a>
+        </a>
+    </div>
 </div>
-<!--<ul class="list-group">-->
-    <!--<li class="list-group-item" ng-repeat="task in tasks | orderByPriority">-->
-        <!--{{task.name}}-->
-        <!--<span class="badge"> Due: {{task.due | date:medium}}</span>-->
-        <!--<button type="button" ng-click="deleteTask(task.$id, task.name)"  class="close" aria-hidden="true">&times;</button>-->
-
-    <!--</li>-->
-<!--</ul>-->
 
 <div class="row marketing">
-  <h4>Bandera's tip of the day</h4>
-  <p>
-    "Build you relationships on your integrity."
-  </p>
+    <h4>Bandera's tip of the day</h4>
+
+    <p>
+        "Build you relationships on your integrity."
+    </p>
 </div>
 <!--<pre class="well">-->
 
-   <!--{{tasks | json}}-->
+<!--{{tasks | json}}-->
 
 <!--</pre>-->
+
+
+
+
